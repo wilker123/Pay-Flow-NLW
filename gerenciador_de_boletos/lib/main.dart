@@ -1,25 +1,28 @@
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:gerenciador_de_boletos/modules/login/login_page.dart';
 
-import 'modules/home/home_page.dart';
-import 'modules/splash/splash_page.dart';
-import 'shared/themes/app_colors.dart';
 
-void main() {
-  runApp(const MaterialApp(
-    home: AppWidget(),
-  ));  
+
+void main(){
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(AppFirebase());
+
 }
 
-class AppWidget extends StatelessWidget {
-  const AppWidget({ Key? key }) : super(key: key);
+class AppFirebase extends StatefulWidget {
+  const AppFirebase({ Key? key }) : super(key: key);
+
+  @override
+  State<AppFirebase> createState() => _AppFirebaseState();
+}
+
+class _AppFirebaseState extends State<AppFirebase> {
+
+  Future<FirebaseApp> _initializeFirebase =  Firebase.initializeApp();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Pay Day",
-      theme: ThemeData(primaryColor: AppColors.primary),
-      home: const LoginPage(),
-    );
+    return Container();
   }
 }
