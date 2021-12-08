@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'modules/home/home_page.dart';
 import 'modules/login/login_page.dart';
+import 'modules/splash/splash_page.dart';
 import 'shared/themes/app_colors.dart';
 
 class AppWidget extends StatelessWidget {
@@ -11,7 +13,12 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       title: "Pay Day",
       theme: ThemeData(primaryColor: AppColors.primary),
-      home:  const LoginPage(),
+      initialRoute: "/splash",
+      routes: {
+        "/splash": (context) => SplashPage(),
+        "/home": (context) => HomePage(),
+        "/login": (context) => LoginPage(),
+      },
     );
   }
 }
