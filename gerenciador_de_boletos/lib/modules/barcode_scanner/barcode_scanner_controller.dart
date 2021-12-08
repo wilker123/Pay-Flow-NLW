@@ -6,7 +6,10 @@ import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
 
 class BarcodeScannerController {
-  BarcodeScannerStatus status = BarcodeScannerStatus();
+  final statusNotifier = ValueNotifier<BarcodeScannerStatus>(BarcodeScannerStatus());
+
+  BarcodeScannerStatus get status => statusNotifier.value;
+  set status(BarcodeScannerStatus status) => statusNotifier.value = status;
   final barcodeScanner = GoogleMlKit.vision.barcodeScanner();
 
   void getAvailableCameras() async {
