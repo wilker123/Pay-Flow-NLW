@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciador_de_boletos/shared/auth/auth_controller.dart';
+import 'package:gerenciador_de_boletos/shared/models/user_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginController {
@@ -12,7 +13,8 @@ class LoginController {
     );
     try {
       final response = await _googleSignIn.signIn();
-      authController.setUser(response, context);
+      final user = UserModel(name: response!.displayName!, photoURL: response.photoUrl);
+      authController.setUser(user, context);
       print(response);
     } catch (errar) {
       authController.setUser(null, context);
