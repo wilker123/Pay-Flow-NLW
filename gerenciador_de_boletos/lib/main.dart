@@ -5,7 +5,7 @@ import 'package:gerenciador_de_boletos/app_widget.dart';
 
 void main(){
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const AppWidget());
+  runApp(AppWidget());
 
 }
 
@@ -34,7 +34,7 @@ class _AppFirebaseState extends State<AppFirebase> {
           );
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          return const AppWidget();
+          return AppWidget();
         }
         return const Material(
           child: Center(
