@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciador_de_boletos/shared/themes/app_colors.dart';
 import 'package:gerenciador_de_boletos/shared/themes/app_text_styles.dart';
-import 'package:gerenciador_de_boletos/shared/widgets/divider_vertical/divider_vertical_widget.dart';
-import 'package:gerenciador_de_boletos/shared/widgets/label_button/label_button.dart';
+import 'package:gerenciador_de_boletos/shared/widgets/bottom_shoot/bottom_shoot_widget.dart';
 import 'package:gerenciador_de_boletos/shared/widgets/set_label_buttons/set_label_buttons.dart';
 
 class BarcodeScannerPage extends StatefulWidget {
@@ -15,6 +14,14 @@ class BarcodeScannerPage extends StatefulWidget {
 class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
   @override
   Widget build(BuildContext context) {
+    return BottonSheetWidget(
+      title: "Não foi possível identificar um código de barras",
+      subTitle: "Tente escanear ou digite o código do seu boleto.",
+      primaryLabel: "Escanear novamente",
+      primaryOnPressed: (){},
+      secundaryLabel: "Digitar código",
+      secundaryOnPressed: (){}
+    );
     return SafeArea(
       top: true,
       bottom: true,
