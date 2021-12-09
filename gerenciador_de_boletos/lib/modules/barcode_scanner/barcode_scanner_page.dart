@@ -6,7 +6,7 @@ import 'package:gerenciador_de_boletos/shared/themes/app_colors.dart';
 import 'package:gerenciador_de_boletos/shared/themes/app_text_styles.dart';
 import 'package:gerenciador_de_boletos/shared/widgets/bottom_shoot/bottom_shoot_widget.dart';
 import 'package:gerenciador_de_boletos/shared/widgets/set_label_buttons/set_label_buttons.dart';
-
+  
 class BarcodeScannerPage extends StatefulWidget {
   const BarcodeScannerPage({Key? key}) : super(key: key);
 
