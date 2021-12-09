@@ -16,7 +16,7 @@ class BarcodeScannerStatus{
 
   factory BarcodeScannerStatus.available(CameraController controller) => 
     BarcodeScannerStatus(
-      isCameraAvaliable: true, 
+      isCameraAvaliable: true,
       cameraController: controller
     );
 

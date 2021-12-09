@@ -9,7 +9,7 @@ import 'shared/themes/app_colors.dart';
 
 class AppWidget extends StatelessWidget {
 
-  AppWidget(){
+  AppWidget() {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
@@ -23,10 +23,10 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.orange, primaryColor: AppColors.primary),
       initialRoute: "/splash",
       routes: {
-        "/splash": (context) => SplashPage(),
-        "/home": (context) => HomePage(),
-        "/login": (context) => LoginPage(),
-        "/barcodeScanner": (context) => BarcodeScannerPage(),
+        "/splash": (context) => const SplashPage(),
+        "/home": (context) => const HomePage(),
+        "/login": (context) => const LoginPage(),
+        "/barcodeScanner": (context) => const BarcodeScannerPage(),
       },
     );
   }

@@ -23,6 +23,7 @@ class BarcodeScannerController {
         ResolutionPreset.max,
         enableAudio: false,
       );
+      await cameraController.initialize();
       status = BarcodeScannerStatus.available(cameraController);
     } catch (e) {
       status = BarcodeScannerStatus.error(e.toString());
@@ -30,10 +31,11 @@ class BarcodeScannerController {
   }
 
   void scanWithCamera(){
-    Future.delayed(Duration(seconds: 10)).then((value) {
+    Future.delayed(const Duration(seconds: 10)).then((value) {
       if(status.cameraController != null){
-        if(status.cameraController!.value.isStreamingImages)
+        if(status.cameraController!.value.isStreamingImages) {
           status.cameraController!.stopImageStream();
+        }
       }
       status = BarcodeScannerStatus.error("Timeout de leitura de boleto");
     });
@@ -60,13 +62,14 @@ class BarcodeScannerController {
         getAvailableCameras();
       }
     }catch(e){
+      // ignore: avoid_print
       print(e.toString());
     }
   }
 
   void scanWithImagePicker() async {
     await status.cameraController!.stopImageStream();
-    final response = await ImagePicker().getImage(source: ImageSource.gallery);
+    final response = await ImagePicker().pickImage(source: ImageSource.gallery);
     final inputImage = InputImage.fromFilePath(response!.path);
     scannerBarCode(inputImage);
   }
@@ -83,7 +86,7 @@ class BarcodeScannerController {
             final bytes = allBytes.done().buffer.asUint8List();
             final Size imageSize = 
               Size(image.width.toDouble(), image.height.toDouble());
-            final InputImageRotation imageRotation = InputImageRotation.Rotation_0deg;
+            const InputImageRotation imageRotation = InputImageRotation.Rotation_0deg;
             final InputImageFormat inputImageFormat = InputImageFormatMethods.fromRawValue(image.format.raw) ?? 
                 InputImageFormat.NV21;
             final planeData = image.planes.map(
@@ -106,11 +109,22 @@ class BarcodeScannerController {
               bytes: bytes, 
               inputImageData: inputImageData
             );
-            await Future.delayed(Duration(seconds: 3));
+            await Future.delayed(const Duration(seconds: 3));
             await scannerBarCode(inputImageCamera);
-          } catch (e) {}
+          } catch (e) {            
+            // ignore: avoid_print
+            print(e.toString());
+          }
         },
       );
+    }
+  }
+
+  void dispose(){
+    statusNotifier.dispose();
+    barcodeScanner.close();
+    if(status.showCamera){
+      status.cameraController!.dispose();
     }
   }
 }
