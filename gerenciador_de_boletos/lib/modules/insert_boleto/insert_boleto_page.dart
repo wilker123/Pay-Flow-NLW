@@ -7,8 +7,8 @@ class InsertBoletoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Insert Boleto page"),
+        title: const Text("Insert Boleto page"),
       ),
     );
   }
-}
+} 

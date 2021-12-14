@@ -4,7 +4,6 @@ import 'package:gerenciador_de_boletos/shared/themes/app_colors.dart';
 import 'package:gerenciador_de_boletos/shared/themes/app_images.dart';
 import 'package:gerenciador_de_boletos/shared/themes/app_text_styles.dart';
 import 'package:gerenciador_de_boletos/shared/widgets/social_login_button.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({ Key? key }) : super(key: key);

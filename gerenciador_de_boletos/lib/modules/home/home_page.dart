@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: pages[controller.currentPage],
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         height: 60,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                 controller.setPage(0);
                 setState(() {});
               }, 
-              icon: Icon(Icons.home),
+              icon: const Icon(Icons.home),
               color: AppColors.primary,
             ),
             GestureDetector(
@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                 width: 56,
                 height: 56,
                 decoration: BoxDecoration(color: AppColors.primary, borderRadius: BorderRadius.circular(5)),
-                child: Icon(Icons.add_box_outlined),
+                child: const Icon(Icons.add_box_outlined),
               ),
             ),
             IconButton(
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                 controller.setPage(1);
                 setState(() {});
               }, 
-              icon: Icon(Icons.description_outlined),
+              icon: const Icon(Icons.description_outlined),
               color: AppColors.body,
             ),
           ],

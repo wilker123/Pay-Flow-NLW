@@ -50,6 +50,7 @@ class BarcodeScannerController {
         }
       }
       final barcodes = await barcodeScanner.processImage(inputImage);
+      // ignore: prefer_typing_uninitialized_variables
       var barcode;
       for(Barcode item in barcodes){
         barcode = item.value.displayValue;
@@ -88,7 +89,7 @@ class BarcodeScannerController {
               Size(image.width.toDouble(), image.height.toDouble());
             const InputImageRotation imageRotation = InputImageRotation.Rotation_0deg;
             final InputImageFormat inputImageFormat = InputImageFormatMethods.fromRawValue(image.format.raw) ?? 
-                InputImageFormat.NV21;
+                InputImageFormat.YUV420;
             final planeData = image.planes.map(
               (Plane plane) {
                 return InputImagePlaneMetadata(

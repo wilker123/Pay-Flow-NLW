@@ -33,7 +33,7 @@ class SetLabelButtons extends StatelessWidget {
                 style: enablePrimaryColor ? TextStyles.buttonPrimary : null,
               ),
             ),
-            DividerVerticalWidget(),
+            const DividerVerticalWidget(),
             Expanded(
               child: LabelButton(
                 label: secundaryLabel, 

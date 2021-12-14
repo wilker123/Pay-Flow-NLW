@@ -10,7 +10,7 @@ import 'shared/themes/app_colors.dart';
 
 class AppWidget extends StatelessWidget {
 
-  AppWidget() {
+  AppWidget({Key? key}) : super(key: key) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
@@ -28,7 +28,7 @@ class AppWidget extends StatelessWidget {
         "/home": (context) => const HomePage(),
         "/login": (context) => const LoginPage(),
         "/barcodeScanner": (context) => const BarcodeScannerPage(),
-        "/insertBoletoPage": (context) => const InsertBoletoPage(),
+        "/insert_boleto ": (context) => const InsertBoletoPage(),
       },
     );
   }

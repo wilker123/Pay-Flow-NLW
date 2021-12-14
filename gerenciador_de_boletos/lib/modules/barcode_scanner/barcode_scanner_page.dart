@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciador_de_boletos/modules/barcode_scanner/barcode_scanner_controller.dart';
 import 'package:gerenciador_de_boletos/modules/barcode_scanner/barcode_scanner_status.dart';
@@ -20,6 +19,11 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
   @override
   void initState() {
     controller.getAvailableCameras();
+    controller.statusNotifier.addListener(() {
+      if(controller.status.hasBarcode){
+        Navigator.pushReplacementNamed(context, "/insert_boleto");
+      }
+    });
     super.initState();
   }
 
@@ -31,8 +35,6 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
 
   @override
   Widget build(BuildContext context) {
-    /*  
-    ); */
     return SafeArea(
       top: true,
       bottom: true,
@@ -63,7 +65,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                   "Escaneie o código de barras do boleto",
                   style: TextStyles.buttonBackground,
                 ),
-                leading: BackButton(color: AppColors.background),
+                leading: const BackButton(color: AppColors.background),
               ),
               body: Column(
                 children: [
@@ -96,7 +98,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
           ValueListenableBuilder<BarcodeScannerStatus>(
             valueListenable: controller.statusNotifier,
             builder: (_, status, __) {
-              if (status.showCamera) {
+              if (status.hasError) {
                 return BottonSheetWidget(
                   title: "Não foi possível identificar um código de barras",
                   subTitle: "Tente escanear ou digite o código do seu boleto.",

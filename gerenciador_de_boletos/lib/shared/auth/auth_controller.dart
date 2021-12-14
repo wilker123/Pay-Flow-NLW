@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:gerenciador_de_boletos/shared/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,7 +25,7 @@ class AuthController{
 
   Future<void> currentUser(BuildContext context) async {
     final instance = await SharedPreferences.getInstance();
-    await Future.delayed(Duration(seconds:2));
+    await Future.delayed(const Duration(seconds:2));
     if(instance.containsKey("user")){
       final json = await instance.get("user") as String;
       setUser(UserModel.fromJson(json), context);
